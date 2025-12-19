@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>El viaje secreto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+  text-align:center;
+}
+.wrapper{
+  padding:20px;
+}
+.card{
+  display:none;
+  background:#fff;
+  color:#333;
+  border-radius:22px;
+  padding:24px;
+  max-width:420px;
+  margin:20px auto;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+.card.active{display:block}
+.option{
+  display:block;
+  margin:10px 0;
+  padding:14px;
+  border-radius:14px;
+  background:#eee;
+  font-weight:600;
+  cursor:pointer;
+  border:2px solid transparent;
+}
+.option.correct{background:#d1fae5;border-color:#10b981}
+.option.wrong{background:#fee2e2;border-color:#ef4444}
+button{
+  display:none;
+  margin-top:16px;
+  padding:14px 22px;
+  border:none;
+  border-radius:14px;
+  background:#2563eb;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+button.show{display:inline-block}
+img{
+  width:100%;
+  border-radius:18px;
+  margin-top:16px;
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+<h1>✈️ El viaje secreto</h1>
+
+<div class="card active">
+  <p><strong>Tu regalo es un viaje.</strong><br>Responde para descubrir el destino.</p>
+  <button class="show" onclick="next()">Empezar</button>
+</div>
+
+<div class="card">
+  <p><strong>Pregunta</strong><br>¿En qué país nació la democracia?</p>
+  <div class="option" onclick="wrong(this)">Italia</div>
+  <div class="option" onclick="correct(this)">Grecia</div>
+  <div class="option" onclick="wrong(this)">Francia</div>
+  <div class="option" onclick="wrong(this)">Turquía</div>
+  <button onclick="next()">Avanzar</button>
+</div>
+
+<div class="card">
+  <p>💡 Curiosidad: este sistema político no incluía a toda la población.</p>
+  <button class="show" onclick="next()">Continuar</button>
+</div>
+
+<div class="card">
+  <p><strong>¿Qué ciudad es?</strong></p>
+  <div class="option" onclick="wrong(this)">Roma</div>
+  <div class="option" onclick="correct(this)">Atenas</div>
+  <div class="option" onclick="wrong(this)">París</div>
+  <div class="option" onclick="wrong(this)">Estambul</div>
+  <button onclick="next()">Ver destino</button>
+</div>
+
+<div class="card">
+  <h2>🇬🇷 ATENAS 🇬🇷</h2>
+  <p>20 – 24 febrero 2026</p>
+  <img src="billete_atenas.png" alt="Billetes Atenas">
+</div>
+</div>
+
+<script>
+let i=0;
+const cards=document.querySelectorAll('.card');
+function next(){
+  cards[i].classList.remove('active');
+  i++;
+  cards[i].classList.add('active');
+}
+function correct(el){
+  el.classList.add('correct');
+  el.parentElement.querySelector('button').classList.add('show');
+}
+function wrong(el){
+  el.classList.add('wrong');
+}
+</script>
+</body>
+</html>
